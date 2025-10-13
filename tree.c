@@ -1,20 +1,14 @@
-
+#include "tree.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 
 //The tree that this program is built aroung is an unbalanced binary tree, hence this is what we'll be implemeniting
-
-typedef struct Operator_Struct{
-	uint16_t value;
-	uint16_t id; //id is not unique, iff to branhes have the same valued children they should have the same value.
-	Operator_Struct* left;
-	Operator_Struct* right;
-	Operator_Struct* parent; //The parent allows for faster algotithms
-	uint8_t direction; //boolean for if a left node or not, allows for faster graph traversal.
-} Operator;
 
 uint8_t Operator_isRoot(Operator* n){
 	if(n->parent == NULL){
 		return 1;
-	else {
+	} else {
 		return 0;
 	}
 }
@@ -52,7 +46,7 @@ uint8_t Operator_Compare(Operator* n, Operator* m){
 	uint8_t walker_n_last_direction = LEFT;
 	uint8_t walker_m_last_direction = RIGHT;
 
-	uint8 running = 1;
+	uint8_t running = 1;
 	while(running == 1){
 		if(walker_m->value != walker_n->value){
 			return 0;
@@ -79,7 +73,7 @@ uint8_t Operator_Compare(Operator* n, Operator* m){
 			}
 		} else {
 			walker_n->left;
-			walker_n_direction = LEFT;
+			walker_n_last_direction = LEFT;
 		}
 		if(Operator_isEnd(walker_m) == 1){
 			if(walker_m_last_direction == LEFT){
@@ -103,12 +97,12 @@ uint8_t Operator_Compare(Operator* n, Operator* m){
 			}
 		} else {
 			walker_m->left;
-			walker_m_direction = LEFT;
+			walker_m_last_direction = LEFT;
 		}	
 	}
 	return 1; //basically never reaches though it kind of needs too sometimes;
 }
 
-uint8_t Operators_Pattern_Match(Operator* pattern, Operator* n){
-
-}
+//uint8_t Operators_Pattern_Match(Operator* pattern, Operator* n){
+	
+//}
