@@ -17,3 +17,5 @@ uint8_t*  List_Get(List* l, uint16_t i);
 void List_Remove(List* l, uint16_t t);
 
 void List_Insert(List* l, uint16_t index, uint8_t* data);
+
+void List_Print_Blob(List* l);

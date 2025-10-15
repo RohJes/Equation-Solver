@@ -83,3 +83,8 @@ void List_Insert(List*l, uint16_t index, uint8_t* data){
 	}
 }
 
+void List_Print_Blob(List* l){
+	for(uint16_t i = 0; i < l->size * l->elementSize; i++){
+		printf("%d: %x\n", i, *(l->elements + i));
+	}
+}
